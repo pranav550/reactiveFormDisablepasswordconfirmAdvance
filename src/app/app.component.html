@@ -1,0 +1,135 @@
+<div class="container p-3">
+    <div class="offset-3 col-6">
+        <div class="card">
+            <div class="card-header  font-weight-bold">
+                Sign Up Form
+            </div>
+            <div class="card card-body">
+                <form [formGroup]="frmSignup" (submit)="submit()">
+                    <div class="form-group">
+                        <label for="email" [ngClass]="
+                frmSignup.controls['email'].invalid &&
+                (frmSignup.controls['email'].touched || frmSignup.controls['email'].dirty) 
+                  ? 'text-danger'
+                  : ''
+              ">Email Address</label>
+                        <input id="email" formControlName="email" type="email" class="form-control" [ngClass]="
+                frmSignup.controls['email'].invalid &&
+                (frmSignup.controls['email'].touched || frmSignup.controls['email'].dirty) 
+                  ? 'is-invalid'
+                  : ''
+              " />
+                        <div *ngIf="
+                frmSignup.controls['email'].invalid &&
+                (frmSignup.controls['email'].touched || frmSignup.controls['email'].dirty) 
+              ">
+                            <label class="text-danger" *ngIf="frmSignup.controls['email'].hasError('required')">
+                Email is Required!
+              </label>
+                            <label class="text-danger" *ngIf="frmSignup.controls['email'].hasError('email')">
+                Enter a valid email address!
+              </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" [ngClass]="
+                frmSignup.controls['password'].invalid &&
+                frmSignup.controls['password'].touched
+                  ? 'text-danger'
+                  : ''
+              ">Password:</label>
+                        <input id="password" formControlName="password" type="password" class="form-control" [ngClass]="
+                frmSignup.controls['password'].invalid &&
+                (frmSignup.controls['password'].touched || frmSignup.controls['password'].dirty) 
+                  ? 'is-invalid'
+                  : ''
+              " />
+                        <div *ngIf="
+                frmSignup.controls['password'].invalid &&
+                (frmSignup.controls['password'].touched || frmSignup.controls['password'].dirty) 
+              ">
+                            <!--  <label
+                class="text-danger"
+                *ngIf="
+                  frmSignup.controls['password'].hasError('required') ||
+                  (frmSignup.controls['password'].touched || frmSignup.controls['password'].dirty) 
+                "
+              >
+                Must contain at least 8 characters!
+              </label>
+                <label class="text-danger" *ngIf="frmSignup.controls['password'].hasError('hasNumber')">
+                Must contain at least One number
+              </label>
+                <label class="text-danger" *ngIf="
+                  frmSignup.controls['password'].hasError('hasCapitalCase')
+                ">
+                Must contain at least One in Capital Case!
+              </label>
+                <label class="text-danger" *ngIf="frmSignup.controls['password'].hasError('hasSmallCase')">
+                Must contain at least One Letter in Small Case!
+              </label>
+                <label class="text-danger" *ngIf="
+                  frmSignup.controls['password'].hasError(
+                    'hasSpecialCharacters'
+                  )
+                ">
+                Must contain at least One Special Character!
+              </label> -->
+                            <label class="text-danger" *ngIf="
+              frmSignup.controls['password'].hasError(
+                'required'
+              )
+            ">
+                Password is Required!
+              </label>
+                            <label class="text-danger" *ngIf="
+              frmSignup.controls['password'].hasError(
+                'validPassword'
+              )
+            ">
+                Must contain at alpha numeric minimum 8 Character
+                length!
+              </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" [ngClass]="
+                frmSignup.controls['confirmPassword'].invalid &&
+                (frmSignup.controls['confirmPassword'].touched || frmSignup.controls['confirmPassword'].dirty) 
+                  ? 'text-danger'
+                  : ''
+              ">Confirm Password:</label>
+                        <input id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control" [ngClass]="
+                frmSignup.controls['confirmPassword'].invalid &&
+                (frmSignup.controls['confirmPassword'].touched || frmSignup.controls['confirmPassword'].dirty) 
+                  ? 'is-invalid'
+                  : ''
+              " />
+                        <div *ngIf="
+                frmSignup.controls['confirmPassword'].invalid &&
+                (frmSignup.controls['confirmPassword'].touched || frmSignup.controls['confirmPassword'].dirty) 
+              ">
+                            <label class="text-danger" *ngIf="
+                  frmSignup.controls['confirmPassword'].hasError('required')
+                ">
+                Password is Required!
+              </label>
+                            <label class="text-danger" *ngIf="
+                  frmSignup.controls['confirmPassword'].hasError(
+                    'NoPassswordMatch'
+                  )
+                ">
+                Password do not match
+              </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button [disabled]="frmSignup.invalid" type="submit" class="btn btn-primary btn-block font-weight-bold">
+              Sign up
+            </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
